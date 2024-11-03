@@ -29,8 +29,8 @@ public:
     }
 
     bool operator== (const Goat &other) const {
-            return name == other.name;
-        }
+        return name == other.name;
+    }
 };
 
 #endif

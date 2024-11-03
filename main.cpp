@@ -99,7 +99,7 @@ int main_menu() {
     int choice;
     cin >> choice;
     cin.ignore();
-    while (choice < 1 || choice > 4) {
+    while (choice < 1 || choice > 12) {
         cout << "Invalid, again --> ";
         cin >> choice;
         cin.ignore();
@@ -151,11 +151,11 @@ int select_goat(list<Goat> trp) {
 
 auto select_goat_name(list<Goat> trp) {
     string input;
-    Goat temp (input);
     cout << "Select a name:\n";
     display_trip(trp);
     cout << "Choice --> ";
     getline(cin, input);
+    Goat temp (input);
     auto it = find(trp.begin(), trp.end(), temp);
     if (it == trp.end()) {
     	cout << input << " not found.\n";
@@ -167,5 +167,7 @@ void delete_by_name(list<Goat> &trip) {
 	auto it = select_goat_name(trip);
 	if (it == trip.end())
 		return;
+	cout << it->get_age();
 	trip.erase(it);
+    cout << "Goat deleted. New trip size: " << trip.size() << endl;
 }
