@@ -14,9 +14,11 @@ using namespace std;
 const int SZ_NAMES = 200, SZ_COLORS = 25;
 
 int select_goat(list<Goat> trip);
+string select_goat_name(list<Goat> trip);
 void delete_goat(list<Goat> &trip);
 void add_goat(list<Goat> &trip, string [], string []);
 void display_trip(list<Goat> trip);
+void delete_by_name(list<Goat> &trip);
 int main_menu();
 
 int main() {
@@ -79,21 +81,23 @@ int main_menu() {
     cout << "[1] Add a goat\n";
     cout << "[2] Delete a goat\n";
     cout << "[3] List goats\n";
-    cout << "[4] Quit\n";
-    cout << "[5] Quit\n";
-    cout << "[6] Quit\n";
-    cout << "[7] Quit\n";
-    cout << "[8] Quit\n";
-    cout << "[9] Quit\n";
-    cout << "[10] Quit\n";
-    cout << "[11] Quit\n";
+    cout << "[4] Delete goat by name\n";
+    cout << "[5] Search for goat\n";
+    cout << "[6] Get average age\n";
+    cout << "[7] Increase goat ages\n";
+    cout << "[8] Sort goats alphabetically\n";
+    cout << "[9] Sort goats and remove duplicate names\n";
+    cout << "[10] Reverse goat order\n";
+    cout << "[11] Shuffle goat order\n";
     cout << "[12] Quit\n";
     cout << "Choice --> ";
     int choice;
     cin >> choice;
+    cin.ignore();
     while (choice < 1 || choice > 4) {
         cout << "Invalid, again --> ";
         cin >> choice;
+        cin.ignore();
     }
     return choice;
 }
@@ -137,5 +141,16 @@ int select_goat(list<Goat> trp) {
         cout << "Invalid choice, again --> ";
         cin >> input;
     }
+    return input;
+}
+
+string select_goat_name(list<Goat> trp) {
+    string input;
+    Goat temp (input);
+    cout << "Select a name:\n";
+    display_trip(trp);
+    cout << "Choice --> ";
+    getline(cin, input);
+    auto it = find(trp.begin(), trp.end(), temp);
     return input;
 }
