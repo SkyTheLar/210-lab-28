@@ -23,6 +23,8 @@ void delete_by_name(list<Goat> &trip);
 void search_for_goat(list<Goat> trip);
 void avg_age(list<Goat> trip);
 void increase_ages(list<Goat> &trip);
+void sort_trip(list<Goat> &trip);
+void sort_rm_dups(list<Goat> &trip);
 int main_menu();
 
 int main() {
@@ -80,6 +82,10 @@ int main() {
             case 6:
             	cout << "Getting average age.\n";
             	avg_age(trip);
+            	break;
+            case 7:
+            	cout << "Increaseing ages by 1.\n";
+            	increase_ages(trip);
             	break;
             default:
                 cout << "Invalid selection.\n";
@@ -196,5 +202,16 @@ void avg_age(list<Goat> trip) {
 }
 
 void increase_ages(list<Goat> &trip) {
+	for_each(trip.begin(), trip.end(), [](Goat& g){ g.set_age(g.get_age() + 1); });
+	cout << "\nAges increased.\n";
+}
+
+void sort_trip(list<Goat> &trip) {
+	sort(trip.begin(), trip.end());
+	cout << "\nTrip sorted.\n";
+}
+
+void sort_rm_dups(list<Goat> &trip) {
+	sort(trip.begin(), trip.end());
 
 }
