@@ -20,6 +20,7 @@ void delete_goat(list<Goat> &trip);
 void add_goat(list<Goat> &trip, string [], string []);
 void display_trip(list<Goat> trip);
 void delete_by_name(list<Goat> &trip);
+void search_for_goat(list<Goat> trip);
 int main_menu();
 
 int main() {
@@ -155,10 +156,10 @@ auto select_goat_name(list<Goat> trp) {
     display_trip(trp);
     cout << "Choice --> ";
     getline(cin, input);
-    Goat temp (input);
-    auto it = find(trp.begin(), trp.end(), temp);
+    auto it = find(trp.begin(), trp.end(), input);
     if (it == trp.end()) {
     	cout << input << " not found.\n";
+    	return trp.end();
     }
     return it;
 }
@@ -167,7 +168,15 @@ void delete_by_name(list<Goat> &trip) {
 	auto it = select_goat_name(trip);
 	if (it == trip.end())
 		return;
-	cout << it->get_age();
-	trip.erase(it);
+	trip.erase(remove(trip.begin(), trip.end(), it->get_name()), trip.end());
     cout << "Goat deleted. New trip size: " << trip.size() << endl;
+}
+
+void search_for_goat(list<Goat> trip) {
+	string input;
+	cout << "Name to search for: ";
+	getline(cin, input);
+	auto it = find(trip.begin(), trip.end(), input);
+	if (it == trip.end())
+		cout << input << " not found.\n";
 }
