@@ -8,6 +8,7 @@ COMSC 210 | Lab 28 | Skylar Robinson | IDE Used: Eclipse
 #include <fstream>
 #include <iomanip>
 #include <list>
+#include <string>
 #include <algorithm>
 #include <numeric>
 #include <random>
@@ -86,7 +87,7 @@ int main() {
             	avg_age(trip);
             	break;
             case 7:
-            	cout << "Increaseing ages by 1.\n";
+            	cout << "Increasing ages by 1.\n";
             	increase_ages(trip);
             	break;
             case 8:
@@ -100,6 +101,10 @@ int main() {
             case 10:
             	cout << "Reversing the order of goats.\n";
             	reverse(trip);
+            	break;
+            case 11:
+            	cout << "Shuffling the order of goats.\n";
+				//shuffle(trip);
             	break;
             default:
                 cout << "Invalid selection.\n";
@@ -221,7 +226,7 @@ void increase_ages(list<Goat> &trip) {
 }
 
 void sort_trip(list<Goat> &trip) {
-//	sort(trip.begin(), trip.end());
+	sort(trip.begin(), trip.end());
 	cout << "\nTrip sorted.\n";
 }
 
@@ -237,6 +242,6 @@ void reverse(list<Goat> &trip) {
 }
 
 void shuffle(list<Goat> &trip) {
-	shuffle(trip.begin(), trip.end(), default_random_engine());
+//	shuffle(trip.begin(), trip.end(), default_random_engine());
 	cout << "\nTrip shuffled.\n";
 }
