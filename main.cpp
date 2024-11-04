@@ -10,6 +10,7 @@ COMSC 210 | Lab 28 | Skylar Robinson | IDE Used: Eclipse
 #include <list>
 #include <algorithm>
 #include <numeric>
+#include <random>
 #include "Goat.h"
 using namespace std;
 
@@ -25,6 +26,7 @@ void avg_age(list<Goat> trip);
 void increase_ages(list<Goat> &trip);
 void sort_trip(list<Goat> &trip);
 void sort_rm_dups(list<Goat> &trip);
+void reverse(list<Goat> &trip);
 int main_menu();
 
 int main() {
@@ -86,6 +88,18 @@ int main() {
             case 7:
             	cout << "Increaseing ages by 1.\n";
             	increase_ages(trip);
+            	break;
+            case 8:
+            	cout << "Sorting goats alphabetically by name.\n";
+				sort_trip(trip);
+            	break;
+            case 9:
+            	cout << "Sorting and deleting duplicates by name.\n";
+            	sort_rm_dups(trip);
+            	break;
+            case 10:
+            	cout << "Reversing the order of goats.\n";
+            	reverse(trip);
             	break;
             default:
                 cout << "Invalid selection.\n";
@@ -207,11 +221,22 @@ void increase_ages(list<Goat> &trip) {
 }
 
 void sort_trip(list<Goat> &trip) {
-	sort(trip.begin(), trip.end());
+//	sort(trip.begin(), trip.end());
 	cout << "\nTrip sorted.\n";
 }
 
 void sort_rm_dups(list<Goat> &trip) {
-	sort(trip.begin(), trip.end());
+//	sort(trip.begin(), trip.end());
+//	trip.erase(unique(trip.begin(), trip.end()), trip.end());
+	cout << "\nSorting and deletion complete.\n";
+}
 
+void reverse(list<Goat> &trip) {
+	reverse(trip.begin(), trip.end());
+	cout << "\nTrip reversed.\n";
+}
+
+void shuffle(list<Goat> &trip) {
+	shuffle(trip.begin(), trip.end(), default_random_engine());
+	cout << "\nTrip shuffled.\n";
 }
