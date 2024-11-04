@@ -9,18 +9,19 @@ COMSC 210 | Lab 28 | Skylar Robinson | IDE Used: Eclipse
 #include <iomanip>
 #include <list>
 #include <algorithm>
+#include <numeric>
 #include "Goat.h"
 using namespace std;
 
 const int SZ_NAMES = 200, SZ_COLORS = 25;
 
 int select_goat(list<Goat> trip);
-auto select_goat_name(list<Goat> trip);
 void delete_goat(list<Goat> &trip);
 void add_goat(list<Goat> &trip, string [], string []);
 void display_trip(list<Goat> trip);
 void delete_by_name(list<Goat> &trip);
 void search_for_goat(list<Goat> trip);
+void avg_age(list<Goat> trip);
 int main_menu();
 
 int main() {
@@ -70,6 +71,10 @@ int main() {
             case 4:
             	cout << "Removing a goat by name.\n";
             	delete_by_name(trip);
+            	break;
+            case 5:
+            	cout << "Searching for a goat.\n";
+            	search_for_goat(trip);
             	break;
             default:
                 cout << "Invalid selection.\n";
@@ -150,25 +155,18 @@ int select_goat(list<Goat> trp) {
     return input;
 }
 
-auto select_goat_name(list<Goat> trp) {
+void delete_by_name(list<Goat> &trip) {
     string input;
     cout << "Select a name:\n";
-    display_trip(trp);
+    display_trip(trip);
     cout << "Choice --> ";
     getline(cin, input);
-    auto it = find(trp.begin(), trp.end(), input);
-    if (it == trp.end()) {
+    auto it = find(trip.begin(), trip.end(), input);
+    if (it == trip.end()) {
     	cout << input << " not found.\n";
-    	return trp.end();
+    	return;
     }
-    return it;
-}
-
-void delete_by_name(list<Goat> &trip) {
-	auto it = select_goat_name(trip);
-	if (it == trip.end())
-		return;
-	trip.erase(remove(trip.begin(), trip.end(), it->get_name()), trip.end());
+	trip.erase(remove(trip.begin(), trip.end(), input), trip.end());
     cout << "Goat deleted. New trip size: " << trip.size() << endl;
 }
 
@@ -177,6 +175,16 @@ void search_for_goat(list<Goat> trip) {
 	cout << "Name to search for: ";
 	getline(cin, input);
 	auto it = find(trip.begin(), trip.end(), input);
-	if (it == trip.end())
+	if (it == trip.end()) {
 		cout << input << " not found.\n";
+	} else {
+	    cout << "Displaying " << input << ":\n"
+	    	 << it->get_name() << " ("
+			 << it->get_age() << ", "
+			 << it->get_color() << ")\n";
+	}
+}
+
+void avg_age(list<Goat> trip) {
+	int sum = accumulate(trip.begin(), trip.end(), 0);
 }
