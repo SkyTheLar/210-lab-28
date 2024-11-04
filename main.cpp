@@ -226,7 +226,7 @@ void increase_ages(list<Goat> &trip) {
 }
 
 void sort_trip(list<Goat> &trip) {
-	sort(trip.begin(), trip.end());
+	sort(trip.begin(), trip.end(), 0);
 	cout << "\nTrip sorted.\n";
 }
 
