@@ -28,6 +28,7 @@ void increase_ages(list<Goat> &trip);
 void sort_trip(list<Goat> &trip);
 void sort_rm_dups(list<Goat> &trip);
 void reverse(list<Goat> &trip);
+void shuffle(list<Goat> &trip);
 int main_menu();
 
 int main() {
@@ -104,7 +105,7 @@ int main() {
             	break;
             case 11:
             	cout << "Shuffling the order of goats.\n";
-				//shuffle(trip);
+				shuffle(trip);
             	break;
             default:
                 cout << "Invalid selection.\n";
@@ -226,13 +227,13 @@ void increase_ages(list<Goat> &trip) {
 }
 
 void sort_trip(list<Goat> &trip) {
-	sort(trip.begin(), trip.end(), 0);
+	sort(trip.begin(), trip.end());
 	cout << "\nTrip sorted.\n";
 }
 
 void sort_rm_dups(list<Goat> &trip) {
 //	sort(trip.begin(), trip.end());
-//	trip.erase(unique(trip.begin(), trip.end()), trip.end());
+	trip.erase(unique(trip.begin(), trip.end()), trip.end());
 	cout << "\nSorting and deletion complete.\n";
 }
 
