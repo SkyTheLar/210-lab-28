@@ -22,6 +22,7 @@ void display_trip(list<Goat> trip);
 void delete_by_name(list<Goat> &trip);
 void search_for_goat(list<Goat> trip);
 void avg_age(list<Goat> trip);
+void increase_ages(list<Goat> &trip);
 int main_menu();
 
 int main() {
@@ -75,6 +76,10 @@ int main() {
             case 5:
             	cout << "Searching for a goat.\n";
             	search_for_goat(trip);
+            	break;
+            case 6:
+            	cout << "Getting average age.\n";
+            	avg_age(trip);
             	break;
             default:
                 cout << "Invalid selection.\n";
@@ -186,5 +191,10 @@ void search_for_goat(list<Goat> trip) {
 }
 
 void avg_age(list<Goat> trip) {
-	int sum = accumulate(trip.begin(), trip.end(), 0);
+	int sum = accumulate(trip.begin(), trip.end(), 0, [](int sum, const Goat& g){ return sum + g.get_age(); });
+	cout << "Average age: " << fixed << setprecision(0) << sum / trip.size() << endl;
+}
+
+void increase_ages(list<Goat> &trip) {
+
 }
