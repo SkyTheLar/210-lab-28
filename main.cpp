@@ -227,12 +227,12 @@ void increase_ages(list<Goat> &trip) {
 }
 
 void sort_trip(list<Goat> &trip) {
-	sort(trip.begin(), trip.end());
+	trip.sort();
 	cout << "\nTrip sorted.\n";
 }
 
 void sort_rm_dups(list<Goat> &trip) {
-//	sort(trip.begin(), trip.end());
+	trip.sort();
 	trip.erase(unique(trip.begin(), trip.end()), trip.end());
 	cout << "\nSorting and deletion complete.\n";
 }
