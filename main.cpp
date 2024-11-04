@@ -12,6 +12,7 @@ COMSC 210 | Lab 28 | Skylar Robinson | IDE Used: Eclipse
 #include <algorithm>
 #include <numeric>
 #include <random>
+#include <vector>
 #include "Goat.h"
 using namespace std;
 
@@ -243,6 +244,8 @@ void reverse(list<Goat> &trip) {
 }
 
 void shuffle(list<Goat> &trip) {
-//	shuffle(trip.begin(), trip.end(), default_random_engine());
+	vector<Goat> temp(trip.begin(), trip.end());
+ 	shuffle(temp.begin(), temp.end(), default_random_engine());
+ 	copy(temp.begin(), temp.end(), trip.begin());
 	cout << "\nTrip shuffled.\n";
 }
